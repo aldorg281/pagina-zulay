@@ -3,219 +3,964 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INVERSIONES ZULAY S.A.C. - Expertos en Limpieza y Hogar</title>
-    <!-- Tailwind CSS -->
+    <title>Inversiones Zulay S.A.C. - Tu Tienda de Confianza</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        zulayNavy: '#1D2B6B',
-                        zulayBlue: '#0088FF',
-                        zulayLightBlue: '#00A3FF'
+                        zulay: {
+                            dark: '#1e3a5f',
+                            primary: '#0066b3',
+                            light: '#00a8e8',
+                            accent: '#00d4ff',
+                            gray: '#f5f7fa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .hero-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .category-card {
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 102, 179, 0.2);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .flash-sale {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .brand-logo {
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+            opacity: 0.6;
+        }
+        
+        .brand-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #0066b3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 102, 179, 0.3);
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background: #1e3a5f;
+            transform: translateY(-5px);
+        }
+        
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50">
 
     <!-- Top Bar -->
-    <div class="bg-zulayNavy text-white text-sm py-2 px-4 flex justify-between items-center flex-wrap">
-        <div class="flex items-center space-x-4">
-            <span><i class="fas fa-truck mr-1"></i> Envíos a todo el Perú</span>
-            <span><i class="fas fa-phone mr-1"></i> Pedidos y Atención: <strong>924 227 910</strong></span>
-        </div>
-        <div class="flex items-center space-x-3">
-            <a href="https://wa.me/51924227910" target="_blank" class="hover:text-zulayLightBlue transition"><i class="fab fa-whatsapp text-lg"></i></a>
-            <a href="#" class="hover:text-zulayLightBlue transition"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="hover:text-zulayLightBlue transition"><i class="fab fa-instagram"></i></a>
+    <div class="bg-zulay-dark text-white py-2 text-sm">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <span class="hidden md:flex items-center gap-2">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:924227910" class="hover:text-zulay-accent transition">924 227 910</a>
+                </span>
+                <span class="hidden md:flex items-center gap-2">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:ventas@inversioneszulay.com" class="hover:text-zulay-accent transition">ventas@inversioneszulay.com</a>
+                </span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#" class="hover:text-zulay-accent transition">Seguimiento de Pedido</a>
+                <a href="#" class="hover:text-zulay-accent transition">Ayuda</a>
+                <div class="flex gap-2">
+                    <a href="#" class="hover:text-zulay-accent transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-zulay-accent transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-zulay-accent transition"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Header / Navbar -->
+    <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo Inversiones Zulay -->
-            <div class="flex items-center space-x-3">
-                <div class="bg-zulayNavy text-white p-2 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl">
-                    Z
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between gap-4">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-16 h-16 bg-gradient-to-br from-zulay-dark to-zulay-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">Z</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-zulay-dark">Inversiones <span class="text-zulay-primary">Zulay</span></h1>
+                        <p class="text-xs text-gray-500">S.A.C.</p>
+                    </div>
                 </div>
-                <div>
-                    <h1 class="text-2xl font-extrabold text-zulayNavy tracking-tight">INVERSIONES <span class="text-zulayBlue italic">Zulay</span> <span class="text-xs text-zulayNavy">S.A.C.</span></h1>
-                    <p class="text-xs text-gray-500">Calidad y Soluciones para el Hogar</p>
+
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-2xl">
+                    <div class="flex w-full">
+                        <input type="text" placeholder="¿Qué estás buscando?" class="flex-1 px-4 py-3 border-2 border-gray-200 rounded-l-lg focus:outline-none focus:border-zulay-primary">
+                        <button class="bg-zulay-primary text-white px-6 py-3 rounded-r-lg hover:bg-zulay-dark transition">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hidden md:flex flex-col items-center text-gray-600 hover:text-zulay-primary transition">
+                        <i class="far fa-user text-2xl"></i>
+                        <span class="text-xs mt-1">Mi Cuenta</span>
+                    </a>
+                    <a href="#" class="hidden md:flex flex-col items-center text-gray-600 hover:text-zulay-primary transition relative">
+                        <i class="far fa-heart text-2xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                        <span class="text-xs mt-1">Favoritos</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center text-gray-600 hover:text-zulay-primary transition relative">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-zulay-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">5</span>
+                        <span class="text-xs mt-1 hidden md:block">Carrito</span>
+                    </a>
                 </div>
             </div>
+        </div>
 
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex space-x-6 font-semibold text-gray-700">
-                <a href="#inicio" class="text-zulayBlue hover:text-zulayNavy">Inicio</a>
-                <a href="#categorias" class="hover:text-zulayBlue transition">Categorías</a>
-                <a href="#productos" class="hover:text-zulayBlue transition">Productos</a>
-                <a href="#nosotros" class="hover:text-zulayBlue transition">Nosotros</a>
-                <a href="#contacto" class="hover:text-zulayBlue transition">Contacto</a>
-            </nav>
+        <!-- Navigation -->
+        <nav class="bg-zulay-primary text-white">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between">
+                    <button class="md:hidden py-3" id="mobileMenuBtn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    
+                    <ul class="hidden md:flex items-center gap-8 py-3">
+                        <li class="nav-item relative">
+                            <a href="#" class="flex items-center gap-2 hover:text-zulay-accent transition font-medium">
+                                <i class="fas fa-th"></i>
+                                Categorías
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </a>
+                            <div class="mega-menu absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg p-6 w-64">
+                                <ul class="space-y-3">
+                                    <li><a href="#" class="flex items-center gap-3 hover:text-zulay-primary transition"><i class="fas fa-tv text-zulay-primary"></i> Electrodomésticos</a></li>
+                                    <li><a href="#" class="flex items-center gap-3 hover:text-zulay-primary transition"><i class="fas fa-mobile-alt text-zulay-primary"></i> Tecnología</a></li>
+                                    <li><a href="#" class="flex items-center gap-3 hover:text-zulay-primary transition"><i class="fas fa-couch text-zulay-primary"></i> Muebles</a></li>
+                                    <li><a href="#" class="flex items-center gap-3 hover:text-zulay-primary transition"><i class="fas fa-tshirt text-zulay-primary"></i> Moda</a></li>
+                                    <li><a href="#" class="flex items-center gap-3 hover:text-zulay-primary transition"><i class="fas fa-home text-zulay-primary"></i> Hogar</a></li>
+                                    <li><a href="#" class="flex items-center gap-3 hover:text-zulay-primary transition"><i class="fas fa-tools text-zulay-primary"></i> Herramientas</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#" class="hover:text-zulay-accent transition font-medium">Inicio</a></li>
+                        <li><a href="#" class="hover:text-zulay-accent transition font-medium">Ofertas</a></li>
+                        <li><a href="#" class="hover:text-zulay-accent transition font-medium">Nuevos</a></li>
+                        <li><a href="#" class="hover:text-zulay-accent transition font-medium">Marcas</a></li>
+                        <li><a href="#" class="hover:text-zulay-accent transition font-medium">Contacto</a></li>
+                    </ul>
 
-            <!-- Action Buttons -->
-            <div class="flex items-center space-x-4">
-                <a href="https://wa.me/51924227910?text=Hola,%20deseo%20informacion%20de%20sus%20productos" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-bold flex items-center space-x-2 shadow transition">
-                    <i class="fab fa-whatsapp text-lg"></i>
-                    <span class="hidden sm:inline">WhatsApp 924 227 910</span>
-                </a>
+                    <div class="hidden md:flex items-center gap-4 py-3">
+                        <a href="tel:924227910" class="flex items-center gap-2 bg-white text-zulay-primary px-4 py-2 rounded-full font-semibold hover:bg-zulay-accent hover:text-white transition">
+                            <i class="fas fa-phone"></i>
+                            924 227 910
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-4">
+                <input type="text" placeholder="Buscar..." class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg mb-4 focus:outline-none focus:border-zulay-primary">
+                <ul class="space-y-3">
+                    <li><a href="#" class="block py-2 hover:text-zulay-primary">Categorías</a></li>
+                    <li><a href="#" class="block py-2 hover:text-zulay-primary">Inicio</a></li>
+                    <li><a href="#" class="block py-2 hover:text-zulay-primary">Ofertas</a></li>
+                    <li><a href="#" class="block py-2 hover:text-zulay-primary">Nuevos</a></li>
+                    <li><a href="#" class="block py-2 hover:text-zulay-primary">Marcas</a></li>
+                    <li><a href="#" class="block py-2 hover:text-zulay-primary">Contacto</a></li>
+                </ul>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="bg-gradient-to-r from-zulayNavy to-zulayBlue text-white py-16 px-4">
-        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2 mb-8 md:mb-0 space-y-4">
-                <span class="bg-zulayLightBlue text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Productos 100% Garantizados</span>
-                <h2 class="text-4xl md:text-5xl font-black leading-tight">Soluciones integrales de limpieza e higiene</h2>
-                <p class="text-lg opacity-90">Ofrecemos la mayor variedad de artículos de limpieza, plásticos y organizadores para tu hogar o negocio a precios de fabricante.</p>
-                <div class="pt-4 flex space-x-4">
-                    <a href="#productos" class="bg-white text-zulayNavy font-bold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition">Ver Catálogo</a>
-                    <a href="https://wa.me/51924227910" target="_blank" class="border-2 border-white text-white font-bold px-6 py-3 rounded-lg hover:bg-white hover:text-zulayNavy transition">Cotizar por WhatsApp</a>
-                </div>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20 text-center">
-                    <i class="fas fa-broom text-8xl text-zulayLightBlue mb-4"></i>
-                    <h3 class="text-2xl font-bold">Inversiones Zulay S.A.C.</h3>
-                    <p class="text-sm mt-2">Tu socio confiable en distribución e importación.</p>
+    <!-- Hero Slider -->
+    <section class="hero-slider h-[400px] md:h-[500px] relative">
+        <div class="slide active bg-gradient-to-r from-zulay-dark to-zulay-primary">
+            <div class="container mx-auto px-4 h-full flex items-center">
+                <div class="grid md:grid-cols-2 gap-8 items-center w-full">
+                    <div class="text-white">
+                        <span class="inline-block bg-zulay-accent text-zulay-dark px-4 py-2 rounded-full font-semibold mb-4">NUEVA COLECCIÓN 2024</span>
+                        <h2 class="text-4xl md:text-6xl font-bold mb-4">Tecnología de Última Generación</h2>
+                        <p class="text-xl mb-6">Descubre los mejores productos con precios increíbles</p>
+                        <a href="#" class="inline-block bg-white text-zulay-primary px-8 py-4 rounded-full font-bold hover:bg-zulay-accent transition transform hover:scale-105">
+                            Comprar Ahora <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="animate-float">
+                            <i class="fas fa-laptop text-[200px] text-white opacity-20"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <div class="slide bg-gradient-to-r from-zulay-primary to-zulay-light">
+            <div class="container mx-auto px-4 h-full flex items-center">
+                <div class="grid md:grid-cols-2 gap-8 items-center w-full">
+                    <div class="text-white">
+                        <span class="inline-block bg-red-500 text-white px-4 py-2 rounded-full font-semibold mb-4">OFERTA ESPECIAL</span>
+                        <h2 class="text-4xl md:text-6xl font-bold mb-4">Hasta 50% de Descuento</h2>
+                        <p class="text-xl mb-6">En electrodomésticos seleccionados</p>
+                        <a href="#" class="inline-block bg-white text-zulay-primary px-8 py-4 rounded-full font-bold hover:bg-zulay-accent transition transform hover:scale-105">
+                            Ver Ofertas <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="animate-float">
+                            <i class="fas fa-tv text-[200px] text-white opacity-20"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide bg-gradient-to-r from-zulay-light to-zulay-accent">
+            <div class="container mx-auto px-4 h-full flex items-center">
+                <div class="grid md:grid-cols-2 gap-8 items-center w-full">
+                    <div class="text-white">
+                        <span class="inline-block bg-zulay-dark text-white px-4 py-2 rounded-full font-semibold mb-4">ENVÍO GRATIS</span>
+                        <h2 class="text-4xl md:text-6xl font-bold mb-4">En Compras Mayores a S/200</h2>
+                        <p class="text-xl mb-6">A todo el Perú</p>
+                        <a href="#" class="inline-block bg-white text-zulay-primary px-8 py-4 rounded-full font-bold hover:bg-zulay-accent transition transform hover:scale-105">
+                            Comprar Ahora <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="animate-float">
+                            <i class="fas fa-shipping-fast text-[200px] text-white opacity-20"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Categorías Destacadas -->
-    <section id="categorias" class="py-12 container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-zulayNavy mb-8">Nuestras Categorías</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition border-t-4 border-zulayNavy">
-                <i class="fas fa-broom text-4xl text-zulayBlue mb-3"></i>
-                <h3 class="font-bold text-lg text-zulayNavy">Escobas y Escobillones</h3>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition border-t-4 border-zulayBlue">
-                <i class="fas fa-bucket text-4xl text-zulayBlue mb-3"></i>
-                <h3 class="font-bold text-lg text-zulayNavy">Baldes y Mopas</h3>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition border-t-4 border-zulayNavy">
-                <i class="fas fa-box-open text-4xl text-zulayBlue mb-3"></i>
-                <h3 class="font-bold text-lg text-zulayNavy">Cajas Organizadoras</h3>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition border-t-4 border-zulayBlue">
-                <i class="fas fa-pump-soap text-4xl text-zulayBlue mb-3"></i>
-                <h3 class="font-bold text-lg text-zulayNavy">Packs de Limpieza</h3>
-            </div>
+        <!-- Slider Controls -->
+        <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition" id="prevSlide">
+            <i class="fas fa-chevron-left text-2xl"></i>
+        </button>
+        <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition" id="nextSlide">
+            <i class="fas fa-chevron-right text-2xl"></i>
+        </button>
+
+        <!-- Slider Dots -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+            <button class="w-3 h-3 rounded-full bg-white slider-dot active"></button>
+            <button class="w-3 h-3 rounded-full bg-white/50 slider-dot"></button>
+            <button class="w-3 h-3 rounded-full bg-white/50 slider-dot"></button>
         </div>
     </section>
 
-    <!-- Productos Destacados -->
-    <section id="productos" class="py-12 bg-gray-100">
+    <!-- Features Bar -->
+    <section class="bg-white py-8 shadow-sm">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-zulayNavy mb-2">Lo Más Vendido</h2>
-            <p class="text-center text-gray-600 mb-8">Calidad garantizada para tu hogar e industria</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-truck text-4xl text-zulay-primary"></i>
+                    <div>
+                        <h4 class="font-bold text-zulay-dark">Envío Gratis</h4>
+                        <p class="text-sm text-gray-500">En compras +S/200</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-shield-alt text-4xl text-zulay-primary"></i>
+                    <div>
+                        <h4 class="font-bold text-zulay-dark">Garantía</h4>
+                        <p class="text-sm text-gray-500">Productos originales</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-credit-card text-4xl text-zulay-primary"></i>
+                    <div>
+                        <h4 class="font-bold text-zulay-dark">Pago Seguro</h4>
+                        <p class="text-sm text-gray-500">Múltiples métodos</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-headset text-4xl text-zulay-primary"></i>
+                    <div>
+                        <h4 class="font-bold text-zulay-dark">Soporte 24/7</h4>
+                        <p class="text-sm text-gray-500">Atención personalizada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-zulay-dark mb-4">Nuestras Categorías</h2>
+                <p class="text-gray-600">Encuentra todo lo que necesitas en un solo lugar</p>
+            </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Producto 1 -->
-                <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-xl transition">
-                    <div class="bg-gray-200 h-48 flex items-center justify-center">
-                        <i class="fas fa-broom text-6xl text-zulayNavy opacity-50"></i>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="category-card bg-white rounded-xl p-6 text-center cursor-pointer">
+                    <div class="w-20 h-20 bg-gradient-to-br from-zulay-primary to-zulay-light rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tv text-3xl text-white"></i>
                     </div>
-                    <div class="p-4">
-                        <span class="text-xs text-zulayBlue font-semibold uppercase">Escobas</span>
-                        <h4 class="font-bold text-gray-800 text-lg mt-1">Escoba Multiusos Zulay</h4>
-                        <p class="text-zulayNavy font-black text-xl mt-2">S/. 14.50</p>
-                        <a href="https://wa.me/51924227910?text=Deseo%20comprar%20Escoba%20Multiusos%20Zulay" target="_blank" class="mt-4 w-full bg-zulayNavy hover:bg-zulayBlue text-white font-bold py-2 rounded text-center block transition">Comprar por WhatsApp</a>
-                    </div>
+                    <h3 class="font-semibold text-zulay-dark">Televisores</h3>
+                    <p class="text-sm text-gray-500 mt-1">120 productos</p>
                 </div>
-
-                <!-- Producto 2 -->
-                <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-xl transition">
-                    <div class="bg-gray-200 h-48 flex items-center justify-center">
-                        <i class="fas fa-bucket text-6xl text-zulayNavy opacity-50"></i>
+                
+                <div class="category-card bg-white rounded-xl p-6 text-center cursor-pointer">
+                    <div class="w-20 h-20 bg-gradient-to-br from-zulay-primary to-zulay-light rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-mobile-alt text-3xl text-white"></i>
                     </div>
-                    <div class="p-4">
-                        <span class="text-xs text-zulayBlue font-semibold uppercase">Sets</span>
-                        <h4 class="font-bold text-gray-800 text-lg mt-1">Set Balde 13L + Trapeador</h4>
-                        <p class="text-zulayNavy font-black text-xl mt-2">S/. 34.90</p>
-                        <a href="https://wa.me/51924227910?text=Deseo%20comprar%20Set%20Balde%2013L" target="_blank" class="mt-4 w-full bg-zulayNavy hover:bg-zulayBlue text-white font-bold py-2 rounded text-center block transition">Comprar por WhatsApp</a>
-                    </div>
+                    <h3 class="font-semibold text-zulay-dark">Celulares</h3>
+                    <p class="text-sm text-gray-500 mt-1">85 productos</p>
                 </div>
-
-                <!-- Producto 3 -->
-                <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-xl transition">
-                    <div class="bg-gray-200 h-48 flex items-center justify-center">
-                        <i class="fas fa-boxes text-6xl text-zulayNavy opacity-50"></i>
+                
+                <div class="category-card bg-white rounded-xl p-6 text-center cursor-pointer">
+                    <div class="w-20 h-20 bg-gradient-to-br from-zulay-primary to-zulay-light rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-laptop text-3xl text-white"></i>
                     </div>
-                    <div class="p-4">
-                        <span class="text-xs text-zulayBlue font-semibold uppercase">Organización</span>
-                        <h4 class="font-bold text-gray-800 text-lg mt-1">Caja Organizadora Grande</h4>
-                        <p class="text-zulayNavy font-black text-xl mt-2">S/. 18.40</p>
-                        <a href="https://wa.me/51924227910?text=Deseo%20comprar%20Caja%20Organizadora%20Grande" target="_blank" class="mt-4 w-full bg-zulayNavy hover:bg-zulayBlue text-white font-bold py-2 rounded text-center block transition">Comprar por WhatsApp</a>
-                    </div>
+                    <h3 class="font-semibold text-zulay-dark">Laptops</h3>
+                    <p class="text-sm text-gray-500 mt-1">65 productos</p>
                 </div>
-
-                <!-- Producto 4 -->
-                <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-xl transition">
-                    <div class="bg-gray-200 h-48 flex items-center justify-center">
-                        <i class="fas fa-dumpster text-6xl text-zulayNavy opacity-50"></i>
+                
+                <div class="category-card bg-white rounded-xl p-6 text-center cursor-pointer">
+                    <div class="w-20 h-20 bg-gradient-to-br from-zulay-primary to-zulay-light rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-blender text-3xl text-white"></i>
                     </div>
-                    <div class="p-4">
-                        <span class="text-xs text-zulayBlue font-semibold uppercase">Recogedores</span>
-                        <h4 class="font-bold text-gray-800 text-lg mt-1">Recogedor Reforzado Flip</h4>
-                        <p class="text-zulayNavy font-black text-xl mt-2">S/. 13.00</p>
-                        <a href="https://wa.me/51924227910?text=Deseo%20comprar%20Recogedor%20Reforzado" target="_blank" class="mt-4 w-full bg-zulayNavy hover:bg-zulayBlue text-white font-bold py-2 rounded text-center block transition">Comprar por WhatsApp</a>
+                    <h3 class="font-semibold text-zulay-dark">Electro</h3>
+                    <p class="text-sm text-gray-500 mt-1">200 productos</p>
+                </div>
+                
+                <div class="category-card bg-white rounded-xl p-6 text-center cursor-pointer">
+                    <div class="w-20 h-20 bg-gradient-to-br from-zulay-primary to-zulay-light rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-couch text-3xl text-white"></i>
                     </div>
+                    <h3 class="font-semibold text-zulay-dark">Muebles</h3>
+                    <p class="text-sm text-gray-500 mt-1">150 productos</p>
+                </div>
+                
+                <div class="category-card bg-white rounded-xl p-6 text-center cursor-pointer">
+                    <div class="w-20 h-20 bg-gradient-to-br from-zulay-primary to-zulay-light rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tshirt text-3xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-zulay-dark">Moda</h3>
+                    <p class="text-sm text-gray-500 mt-1">300 productos</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Nosotros Section -->
-    <section id="nosotros" class="py-16 container mx-auto px-4">
-        <div class="max-w-3xl mx-auto text-center space-y-4">
-            <h2 class="text-3xl font-bold text-zulayNavy">Sobre Inversiones Zulay S.A.C.</h2>
-            <p class="text-gray-600 leading-relaxed">En <strong>INVERSIONES ZULAY S.A.C.</strong> somos especialistas en la comercialización y distribución de artículos de limpieza y plásticos para el hogar y la industria peruana. Ofrecemos calidad, durabilidad y los mejores precios del mercado.</p>
-            <div class="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div class="bg-white p-6 rounded-lg shadow border-l-4 border-zulayNavy">
-                    <h3 class="font-bold text-zulayNavy text-lg mb-2">Nuestra Misión</h3>
-                    <p class="text-sm text-gray-600">Proveer productos eficientes y de alta durabilidad para facilitar el trabajo de limpieza en hogares y empresas del Perú.</p>
+    <!-- Flash Sale -->
+    <section class="flash-sale py-16 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative">
+            <div class="text-center mb-12">
+                <span class="inline-block bg-white text-red-500 px-6 py-2 rounded-full font-bold text-lg mb-4 pulse-animation">⚡ OFERTA RELÁMPAGO</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">¡No te pierdas estas ofertas!</h2>
+                <p class="text-xl mb-8">Termina en:</p>
+                
+                <div class="flex justify-center gap-4">
+                    <div class="countdown-item rounded-lg p-4 min-w-[80px]">
+                        <div class="text-4xl font-bold" id="hours">12</div>
+                        <div class="text-sm">Horas</div>
+                    </div>
+                    <div class="countdown-item rounded-lg p-4 min-w-[80px]">
+                        <div class="text-4xl font-bold" id="minutes">45</div>
+                        <div class="text-sm">Minutos</div>
+                    </div>
+                    <div class="countdown-item rounded-lg p-4 min-w-[80px]">
+                        <div class="text-4xl font-bold" id="seconds">30</div>
+                        <div class="text-sm">Segundos</div>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow border-l-4 border-zulayBlue">
-                    <h3 class="font-bold text-zulayNavy text-lg mb-2">Nuestra Visión</h3>
-                    <p class="text-sm text-gray-600">Convertirnos en el aliado preferido en artículos de limpieza y plásticos a nivel nacional.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl p-6 text-gray-800">
+                    <div class="bg-gray-100 rounded-lg h-48 flex items-center justify-center mb-4">
+                        <i class="fas fa-tv text-6xl text-zulay-primary"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Smart TV 55" 4K</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-red-500 font-bold text-xl">S/ 1,299</span>
+                        <span class="text-gray-400 line-through text-sm">S/ 1,899</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                        <div class="bg-red-500 h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-3">Vendidos: 75%</p>
+                    <button class="w-full bg-zulay-primary text-white py-2 rounded-lg hover:bg-zulay-dark transition">Comprar</button>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-gray-800">
+                    <div class="bg-gray-100 rounded-lg h-48 flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-6xl text-zulay-primary"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">iPhone 14 Pro</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-red-500 font-bold text-xl">S/ 3,499</span>
+                        <span class="text-gray-400 line-through text-sm">S/ 4,299</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                        <div class="bg-red-500 h-2 rounded-full" style="width: 60%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-3">Vendidos: 60%</p>
+                    <button class="w-full bg-zulay-primary text-white py-2 rounded-lg hover:bg-zulay-dark transition">Comprar</button>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-gray-800">
+                    <div class="bg-gray-100 rounded-lg h-48 flex items-center justify-center mb-4">
+                        <i class="fas fa-laptop text-6xl text-zulay-primary"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Laptop Gaming</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-red-500 font-bold text-xl">S/ 4,599</span>
+                        <span class="text-gray-400 line-through text-sm">S/ 5,999</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                        <div class="bg-red-500 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-3">Vendidos: 85%</p>
+                    <button class="w-full bg-zulay-primary text-white py-2 rounded-lg hover:bg-zulay-dark transition">Comprar</button>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-gray-800">
+                    <div class="bg-gray-100 rounded-lg h-48 flex items-center justify-center mb-4">
+                        <i class="fas fa-headphones text-6xl text-zulay-primary"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Audífonos Pro</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-red-500 font-bold text-xl">S/ 299</span>
+                        <span class="text-gray-400 line-through text-sm">S/ 499</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                        <div class="bg-red-500 h-2 rounded-full" style="width: 45%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-3">Vendidos: 45%</p>
+                    <button class="w-full bg-zulay-primary text-white py-2 rounded-lg hover:bg-zulay-dark transition">Comprar</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contacto -->
-    <footer id="contacto" class="bg-zulayNavy text-white py-10">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <h3 class="text-xl font-bold mb-3">INVERSIONES ZULAY S.A.C.</h3>
-                <p class="text-sm text-gray-300">Calidad, innovación y servicio al cliente en cada producto.</p>
+    <!-- Featured Products -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-zulay-dark mb-4">Productos Destacados</h2>
+                <p class="text-gray-600">Los más vendidos de nuestra tienda</p>
             </div>
-            <div>
-                <h4 class="font-bold mb-3">Atención al Cliente</h4>
-                <p class="text-sm text-gray-300"><i class="fas fa-phone mr-2"></i> Teléfono: 924 227 910</p>
-                <p class="text-sm text-gray-300"><i class="fab fa-whatsapp mr-2"></i> WhatsApp: +51 924 227 910</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="product-card bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <div class="relative">
+                        <div class="product-image bg-gray-100 h-64 flex items-center justify-center">
+                            <i class="fas fa-tv text-8xl text-zulay-primary"></i>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">-30%</span>
+                        <button class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-500 hover:text-white transition">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-zulay-dark mb-2">Smart TV Samsung 65" 4K</h3>
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                            <span class="text-sm text-gray-500 ml-1">(4.5)</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-zulay-primary font-bold text-xl">S/ 2,499</span>
+                            <span class="text-gray-400 line-through text-sm">S/ 3,599</span>
+                        </div>
+                        <button class="w-full bg-zulay-primary text-white py-2 rounded-lg hover:bg-zulay-dark transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <div class="relative">
+                        <div class="product-image bg-gray-100 h-64 flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-8xl text-zulay-primary"></i>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">NUEVO</span>
+                        <button class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-500 hover:text-white transition">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-zulay-dark mb-2">iPhone 15 Pro Max</h3>
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <span class="text-sm text-gray-500 ml-1">(5.0)</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-zulay-primary font-bold text-xl">S/ 5,299</span>
+                        </div>
+                        <button class="w-full bg-zulay-primary text-white py-2 rounded-lg hover:bg-zulay-dark transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <div class="relative">
+                        <div class="product-image bg-gray-100 h-64 flex items-center justify-center">
+                            <i class="fas fa-laptop text-8xl text-zulay-primary"></i>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">-25%</span>
+                        <button class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-500 hover:text-white transition">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-zulay-dark mb-2">MacBook Pro M3 14"</h3>
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <span class="text-sm text-gray-500 ml-1">(5.0)</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-zulay-primary font-bold text-xl">S/ 8,999</span>
+                            <span class="text-gray-400 line-through text-sm">S/ 11,999</span>
+                        </div>
+                        <button class="w-full bg-zulay-primary text-white py-2 rounded-lg hover:bg-zulay-dark transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <div class="relative">
+                        <div class="product-image bg-gray-100 h-64 flex items-center justify-center">
+                            <i class="fas fa-blender text-8xl text-zulay-primary"></i>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">-40%</span>
+                        <button class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-500 hover:text-white transition">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-zulay-dark mb-2">Licuadora Industrial Pro</h3>
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="far fa-star text-yellow-400"></i>
+                            <span class="text-sm text-gray-500 ml-1">(4.0)</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-zulay-primary font-bold text-xl">S/ 599</span>
+                            <span class="text-gray-400 line-through text-sm">S/ 999</span>
+                        </div>
+                        <button class="w-full bg-zulay-primary text-white py-2 rounded-lg hover:bg-zulay-dark transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h4 class="font-bold mb-3">Atención Comercial</h4>
-                <p class="text-sm text-gray-300">Lunes a Sábado: 8:00 am - 6:00 pm</p>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-zulay-primary text-white px-8 py-4 rounded-full font-bold hover:bg-zulay-dark transition transform hover:scale-105">
+                    Ver Todos los Productos <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
         </div>
-        <div class="border-t border-gray-700 mt-8 pt-4 text-center text-xs text-gray-400">
-            &copy; 2026 INVERSIONES ZULAY S.A.C. Todos los derechos reservados.
+    </section>
+
+    <!-- Brands -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-zulay-dark mb-4">Marcas que Trabajamos</h2>
+                <p class="text-gray-600">Las mejores marcas del mercado</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="brand-logo bg-white p-6 rounded-xl flex items-center justify-center h-32">
+                    <i class="fab fa-samsung text-6xl text-gray-400"></i>
+                </div>
+                <div class="brand-logo bg-white p-6 rounded-xl flex items-center justify-center h-32">
+                    <i class="fab fa-apple text-6xl text-gray-400"></i>
+                </div>
+                <div class="brand-logo bg-white p-6 rounded-xl flex items-center justify-center h-32">
+                    <i class="fab fa-lg text-6xl text-gray-400"></i>
+                </div>
+                <div class="brand-logo bg-white p-6 rounded-xl flex items-center justify-center h-32">
+                    <i class="fas fa-tv text-6xl text-gray-400"></i>
+                </div>
+                <div class="brand-logo bg-white p-6 rounded-xl flex items-center justify-center h-32">
+                    <i class="fas fa-laptop text-6xl text-gray-400"></i>
+                </div>
+                <div class="brand-logo bg-white p-6 rounded-xl flex items-center justify-center h-32">
+                    <i class="fas fa-mobile-alt text-6xl text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="bg-gradient-to-r from-zulay-dark to-zulay-primary py-16 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-4">Suscríbete a Nuestro Newsletter</h2>
+                <p class="text-xl mb-8">Recibe las mejores ofertas y novedades directamente en tu correo</p>
+                
+                <form class="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto">
+                    <input type="email" placeholder="Tu correo electrónico" class="flex-1 px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-4 focus:ring-zulay-accent">
+                    <button type="submit" class="bg-zulay-accent text-zulay-dark px-8 py-4 rounded-full font-bold hover:bg-white transition transform hover:scale-105">
+                        Suscribirse <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+                
+                <p class="text-sm mt-4 opacity-80">Al suscribirte aceptas nuestra política de privacidad</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zulay-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-zulay-primary to-zulay-light rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">Z</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Inversiones Zulay</h3>
+                            <p class="text-xs text-gray-400">S.A.C.</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Tu tienda de confianza con los mejores productos y precios del mercado.</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-zulay-primary transition">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-zulay-primary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-zulay-primary transition">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-zulay-primary transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Sobre Nosotros</a></li>
+                        <li><a href="#" class="hover:text-white transition">Términos y Condiciones</a></li>
+                        <li><a href="#" class="hover:text-white transition">Política de Privacidad</a></li>
+                        <li><a href="#" class="hover:text-white transition">Política de Devolución</a></li>
+                        <li><a href="#" class="hover:text-white transition">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Categorías</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Electrodomésticos</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tecnología</a></li>
+                        <li><a href="#" class="hover:text-white transition">Muebles</a></li>
+                        <li><a href="#" class="hover:text-white transition">Moda</a></li>
+                        <li><a href="#" class="hover:text-white transition">Hogar</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contacto</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt mt-1"></i>
+                            <span>Av. Principal 123, Lima, Perú</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:924227910" class="hover:text-white transition">924 227 910</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:ventas@inversioneszulay.com" class="hover:text-white transition">ventas@inversioneszulay.com</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-clock"></i>
+                            <span>Lun - Sáb: 9:00 - 20:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm">© 2024 Inversiones Zulay S.A.C. Todos los derechos reservados.</p>
+                    <div class="flex items-center gap-4">
+                        <span class="text-gray-400 text-sm">Métodos de pago:</span>
+                        <div class="flex gap-2">
+                            <i class="fab fa-cc-visa text-3xl text-gray-400"></i>
+                            <i class="fab fa-cc-mastercard text-3xl text-gray-400"></i>
+                            <i class="fab fa-cc-paypal text-3xl text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-chevron-up text-xl"></i>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/51924227910" target="_blank" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Hero Slider
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        document.getElementById('nextSlide').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        document.getElementById('prevSlide').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+
+        // Auto slide
+        setInterval(() => showSlide(currentSlide + 1), 5000);
+
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const endOfDay = new Date();
+            endOfDay.setHours(23, 59, 59, 999);
+            
+            const diff = endOfDay - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Scroll to Top
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Add to Cart Animation
+        document.querySelectorAll('.product-card button').forEach(button => {
+            button.addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check mr-2"></i>Agregado';
+                this.classList.add('bg-green-500');
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.classList.remove('bg-green-500');
+                }, 2000);
+            });
+        });
+    </script>
 </body>
 </html>
