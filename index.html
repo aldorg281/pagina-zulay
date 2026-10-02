@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVERSIONES ZULAY S.A.C. - Expertos en Limpieza y Hogar</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zulayNavy: '#1D2B6B',
+                        zulayBlue: '#0088FF',
+                        zulayLightBlue: '#00A3FF'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Top Bar -->
+    <div class="bg-zulayNavy text-white text-sm py-2 px-4 flex justify-between items-center flex-wrap">
+        <div class="flex items-center space-x-4">
+            <span><i class="fas fa-truck mr-1"></i> Envíos a todo el Perú</span>
+            <span><i class="fas fa-phone mr-1"></i> Pedidos y Atención: <strong>924 227 910</strong></span>
+        </div>
+        <div class="flex items-center space-x-3">
+            <a href="https://wa.me/51924227910" target="_blank" class="hover:text-zulayLightBlue transition"><i class="fab fa-whatsapp text-lg"></i></a>
+            <a href="#" class="hover:text-zulayLightBlue transition"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-zulayLightBlue transition"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo Inversiones Zulay -->
+            <div class="flex items-center space-x-3">
+                <div class="bg-zulayNavy text-white p-2 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl">
+                    Z
+                </div>
+                <div>
+                    <h1 class="text-2xl font-extrabold text-zulayNavy tracking-tight">INVERSIONES <span class="text-zulayBlue italic">Zulay</span> <span class="text-xs text-zulayNavy">S.A.C.</span></h1>
+                    <p class="text-xs text-gray-500">Calidad y Soluciones para el Hogar</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex space-x-6 font-semibold text-gray-700">
+                <a href="#inicio" class="text-zulayBlue hover:text-zulayNavy">Inicio</a>
+                <a href="#categorias" class="hover:text-zulayBlue transition">Categorías</a>
+                <a href="#productos" class="hover:text-zulayBlue transition">Productos</a>
+                <a href="#nosotros" class="hover:text-zulayBlue transition">Nosotros</a>
+                <a href="#contacto" class="hover:text-zulayBlue transition">Contacto</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center space-x-4">
+                <a href="https://wa.me/51924227910?text=Hola,%20deseo%20informacion%20de%20sus%20productos" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-bold flex items-center space-x-2 shadow transition">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span class="hidden sm:inline">WhatsApp 924 227 910</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="bg-gradient-to-r from-zulayNavy to-zulayBlue text-white py-16 px-4">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-8 md:mb-0 space-y-4">
+                <span class="bg-zulayLightBlue text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Productos 100% Garantizados</span>
+                <h2 class="text-4xl md:text-5xl font-black leading-tight">Soluciones integrales de limpieza e higiene</h2>
+                <p class="text-lg opacity-90">Ofrecemos la mayor variedad de artículos de limpieza, plásticos y organizadores para tu hogar o negocio a precios de fabricante.</p>
+                <div class="pt-4 flex space-x-4">
+                    <a href="#productos" class="bg-white text-zulayNavy font-bold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition">Ver Catálogo</a>
+                    <a href="https://wa.me/51924227910" target="_blank" class="border-2 border-white text-white font-bold px-6 py-3 rounded-lg hover:bg-white hover:text-zulayNavy transition">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20 text-center">
+                    <i class="fas fa-broom text-8xl text-zulayLightBlue mb-4"></i>
+                    <h3 class="text-2xl font-bold">Inversiones Zulay S.A.C.</h3>
+                    <p class="text-sm mt-2">Tu socio confiable en distribución e importación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorías Destacadas -->
+    <section id="categorias" class="py-12 container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-zulayNavy mb-8">Nuestras Categorías</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition border-t-4 border-zulayNavy">
+                <i class="fas fa-broom text-4xl text-zulayBlue mb-3"></i>
+                <h3 class="font-bold text-lg text-zulayNavy">Escobas y Escobillones</h3>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition border-t-4 border-zulayBlue">
+                <i class="fas fa-bucket text-4xl text-zulayBlue mb-3"></i>
+                <h3 class="font-bold text-lg text-zulayNavy">Baldes y Mopas</h3>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition border-t-4 border-zulayNavy">
+                <i class="fas fa-box-open text-4xl text-zulayBlue mb-3"></i>
+                <h3 class="font-bold text-lg text-zulayNavy">Cajas Organizadoras</h3>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition border-t-4 border-zulayBlue">
+                <i class="fas fa-pump-soap text-4xl text-zulayBlue mb-3"></i>
+                <h3 class="font-bold text-lg text-zulayNavy">Packs de Limpieza</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section id="productos" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-zulayNavy mb-2">Lo Más Vendido</h2>
+            <p class="text-center text-gray-600 mb-8">Calidad garantizada para tu hogar e industria</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Producto 1 -->
+                <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-xl transition">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-broom text-6xl text-zulayNavy opacity-50"></i>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-xs text-zulayBlue font-semibold uppercase">Escobas</span>
+                        <h4 class="font-bold text-gray-800 text-lg mt-1">Escoba Multiusos Zulay</h4>
+                        <p class="text-zulayNavy font-black text-xl mt-2">S/. 14.50</p>
+                        <a href="https://wa.me/51924227910?text=Deseo%20comprar%20Escoba%20Multiusos%20Zulay" target="_blank" class="mt-4 w-full bg-zulayNavy hover:bg-zulayBlue text-white font-bold py-2 rounded text-center block transition">Comprar por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-xl transition">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-bucket text-6xl text-zulayNavy opacity-50"></i>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-xs text-zulayBlue font-semibold uppercase">Sets</span>
+                        <h4 class="font-bold text-gray-800 text-lg mt-1">Set Balde 13L + Trapeador</h4>
+                        <p class="text-zulayNavy font-black text-xl mt-2">S/. 34.90</p>
+                        <a href="https://wa.me/51924227910?text=Deseo%20comprar%20Set%20Balde%2013L" target="_blank" class="mt-4 w-full bg-zulayNavy hover:bg-zulayBlue text-white font-bold py-2 rounded text-center block transition">Comprar por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-xl transition">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-boxes text-6xl text-zulayNavy opacity-50"></i>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-xs text-zulayBlue font-semibold uppercase">Organización</span>
+                        <h4 class="font-bold text-gray-800 text-lg mt-1">Caja Organizadora Grande</h4>
+                        <p class="text-zulayNavy font-black text-xl mt-2">S/. 18.40</p>
+                        <a href="https://wa.me/51924227910?text=Deseo%20comprar%20Caja%20Organizadora%20Grande" target="_blank" class="mt-4 w-full bg-zulayNavy hover:bg-zulayBlue text-white font-bold py-2 rounded text-center block transition">Comprar por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-xl transition">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-dumpster text-6xl text-zulayNavy opacity-50"></i>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-xs text-zulayBlue font-semibold uppercase">Recogedores</span>
+                        <h4 class="font-bold text-gray-800 text-lg mt-1">Recogedor Reforzado Flip</h4>
+                        <p class="text-zulayNavy font-black text-xl mt-2">S/. 13.00</p>
+                        <a href="https://wa.me/51924227910?text=Deseo%20comprar%20Recogedor%20Reforzado" target="_blank" class="mt-4 w-full bg-zulayNavy hover:bg-zulayBlue text-white font-bold py-2 rounded text-center block transition">Comprar por WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="nosotros" class="py-16 container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center space-y-4">
+            <h2 class="text-3xl font-bold text-zulayNavy">Sobre Inversiones Zulay S.A.C.</h2>
+            <p class="text-gray-600 leading-relaxed">En <strong>INVERSIONES ZULAY S.A.C.</strong> somos especialistas en la comercialización y distribución de artículos de limpieza y plásticos para el hogar y la industria peruana. Ofrecemos calidad, durabilidad y los mejores precios del mercado.</p>
+            <div class="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="bg-white p-6 rounded-lg shadow border-l-4 border-zulayNavy">
+                    <h3 class="font-bold text-zulayNavy text-lg mb-2">Nuestra Misión</h3>
+                    <p class="text-sm text-gray-600">Proveer productos eficientes y de alta durabilidad para facilitar el trabajo de limpieza en hogares y empresas del Perú.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border-l-4 border-zulayBlue">
+                    <h3 class="font-bold text-zulayNavy text-lg mb-2">Nuestra Visión</h3>
+                    <p class="text-sm text-gray-600">Convertirnos en el aliado preferido en artículos de limpieza y plásticos a nivel nacional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contacto -->
+    <footer id="contacto" class="bg-zulayNavy text-white py-10">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-3">INVERSIONES ZULAY S.A.C.</h3>
+                <p class="text-sm text-gray-300">Calidad, innovación y servicio al cliente en cada producto.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3">Atención al Cliente</h4>
+                <p class="text-sm text-gray-300"><i class="fas fa-phone mr-2"></i> Teléfono: 924 227 910</p>
+                <p class="text-sm text-gray-300"><i class="fab fa-whatsapp mr-2"></i> WhatsApp: +51 924 227 910</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3">Atención Comercial</h4>
+                <p class="text-sm text-gray-300">Lunes a Sábado: 8:00 am - 6:00 pm</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-4 text-center text-xs text-gray-400">
+            &copy; 2026 INVERSIONES ZULAY S.A.C. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>
